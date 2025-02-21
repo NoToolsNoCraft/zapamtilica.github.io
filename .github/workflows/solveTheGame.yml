@@ -19,8 +19,16 @@ jobs:
       - name: Install Cypress
         run: npm install cypress --save-dev
 
-      - name: Create dummy Cypress config file
-        run: echo "module.exports = {};" > cypress.config.js
+      - name: Create Cypress configuration file
+        run: |
+          echo "const { defineConfig } = require('cypress');" > cypress.config.js
+          echo "" >> cypress.config.js
+          echo "module.exports = defineConfig({" >> cypress.config.js
+          echo "  e2e: {" >> cypress.config.js
+          echo "    baseUrl: \"https://notoolsnocraft.github.io/zapamtilica.github.io/\"," >> cypress.config.js
+          echo "    specPattern: \"cypress/solveTheGame.cy.js\"," >> cypress.config.js
+          echo "  }," >> cypress.config.js
+          echo "});" >> cypress.config.js
 
       - name: Run Cypress Tests
-        run: npx cypress run --spec 'cypress/solveTheGame.cy.js' --config baseUrl=https://notoolsnocraft.github.io/zapamtilica.github.io/
+        run: npx cypress run
