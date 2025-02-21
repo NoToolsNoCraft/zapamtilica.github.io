@@ -1,6 +1,6 @@
 const icons = [
 				'./images/vučko.png', 
-				'./images/ona.png', 
+				'./images/sirena.png', 
 				'./images/toma.png', 
 				'./images/brnoboc.png', 
 				'./images/bata.png', 
