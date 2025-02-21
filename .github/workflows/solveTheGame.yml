@@ -1,7 +1,7 @@
 name: Run Cypress Tests - Solve Zapamtilica
 
 on:
-  workflow_dispatch:  # This makes the workflow manually triggered
+  workflow_dispatch:
 
 jobs:
   cypress-run:
@@ -19,5 +19,8 @@ jobs:
       - name: Install Cypress
         run: npm install cypress --save-dev
 
+      - name: Create dummy Cypress config file
+        run: echo "module.exports = {};" > cypress.config.js
+
       - name: Run Cypress Tests
-        run: npx cypress run --config-file false --spec 'cypress/solveTheGame.cy.js' --config baseUrl=https://notoolsnocraft.github.io/zapamtilica.github.io/
+        run: npx cypress run --spec 'cypress/solveTheGame.cy.js' --config baseUrl=https://notoolsnocraft.github.io/zapamtilica.github.io/
