@@ -1,24 +1,23 @@
 name: Run Cypress Tests - Solve Zapamtilica
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # This makes the workflow manually triggered
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-    - name: Install Cypress
-      run: npm install cypress --save-dev
+      - name: Install Cypress
+        run: npm install cypress --save-dev
 
-    - name: Run Cypress Tests
-      run: |
-        npx cypress run --spec 'cypress/solveTheGame.cy.js' --config baseUrl=https://notoolsnocraft.github.io/zapamtilica.github.io/
+      - name: Run Cypress Tests
+        run: npx cypress run --config-file false --spec 'cypress/solveTheGame.cy.js' --config baseUrl=https://notoolsnocraft.github.io/zapamtilica.github.io/
